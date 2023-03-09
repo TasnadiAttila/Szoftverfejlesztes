@@ -1,5 +1,6 @@
 package microunit;
 
+import java.io.ObjectStreamException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -17,6 +18,13 @@ public abstract class TestRunner {
         return Arrays.stream(testClass.getDeclaredMethods()).filter(method -> method.isAnnotationPresent(annotationClass)).toList();
     }
 
+    public void runTestMethods() {
+        TestResultAccumulator accumulator = new CountingTestResultAccumulator();
+        for (Method method : getAnnotatedMethods(Test.class)){
+            System.out.println(method);
+            Object instance = testClass.getConstructor().newInstance();
+        }
+    }
     protected abstract void invokeTestMethod(Method method, Object instance, )
         throws IllegalAccessException;
 }
