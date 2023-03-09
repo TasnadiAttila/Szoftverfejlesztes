@@ -2,7 +2,7 @@ package example;
 
 import static microunit.Assert.*;
 
-import microunit.ExpectedExceptionHandlingTestRunner;
+//import microunit.ExpectedExceptionHandlingTestRunner;
 import microunit.Test;
 import microunit.BasicTestRunner;
 
