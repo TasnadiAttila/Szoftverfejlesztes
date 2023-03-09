@@ -24,9 +24,13 @@ public abstract class TestRunner {
             for (Method method : getAnnotatedMethods(Test.class)) {
                 System.out.println(method);
                 Object instance = testClass.getConstructor().newInstance();
+                invokeTestMethod(method,instance,accumulator);
             }
+            System.out.println(accumulator);
         }catch (ReflectiveOperationException | IllegalArgumentException e){
+
             throw new InvalidTestClassException(e);
+
         }
     }
     protected abstract void invokeTestMethod(Method method, Object instance, TestResultAccumulator accumulator)

@@ -1,5 +1,7 @@
 package microunit;
 
+import example.ExampleTest;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -24,5 +26,9 @@ public class BasicTestRunner extends TestRunner{
                 accumulator.onError(method);
             }
         }
+    }
+    public static void main(String[] args){
+        Class<?> testClass = ExampleTest.class;
+        new BasicTestRunner(testClass).runTestMethods();
     }
 }
